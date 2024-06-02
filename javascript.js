@@ -30,9 +30,53 @@ function userChoice (options) {
 
 let userAnswer = userChoice(choices)
 
-console.log(userAnswer)
 
-// Compare Results
+// Compare Options
+
+function compareOptions(player, computer) {
+    let p = player
+    let c = computer
+    switch (p) {
+        case 'rock':
+            switch (c) {
+                case 'paper':
+                    console.log('You lose.');
+                    break;
+                case 'rock':
+                    console.log('Tie.');
+                    break;
+                case 'scissors':
+                    break;
+            }
+        case 'paper':
+            switch (c) {
+                case 'scissors':
+                    console.log('You lose.');
+                    break;
+                case 'paper':
+                    console.log('Tie');
+                    break;
+                case 'rock':
+                    console.log('You win.');
+                    break;
+            }
+        case 'scissors':
+            switch (c) {
+                case 'rock':
+                    console.log('You lose')
+                    break;
+                case 'scissors':
+                    console.log('Tie.')
+                    break
+                case 'paper':
+                    console.log('You win.')
+                    break
+            }
+        
+}
+
+
+
 
 
 
