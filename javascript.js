@@ -1,21 +1,26 @@
 // Rock Paper Scissors
 
+// I'm doing this in my own way as I'm coming from Python and wish to 
+// test how things are handled in comparison. I haven't followed 
+// The Odin Project's exact insructions because of this. It shouldn't 
+// change too much though. 
+
+// Tie: For now, I'm counting a tie as a failed round - no points are given
+// to either the player or computer, and the round doesn't move forward. 
+
 const choices = ["rock", "paper", "scissors"];
 
 
 // Computer Choice
-function compChoice(options) {
+function computerChoice(options) {
     if (Array.isArray(options)) {
         return options[Math.floor(Math.random() * options.length)]
     }
 }
 
-// let comp = compChoice(choices)
-
-// console.log(comp)
 
 // User Choice
-function userChoice (options) {
+function playerChoice (options) {
     let user = prompt("Rock, Paper, Scissors: ")
     if (!options.includes(user.toLowerCase())) {
         console.log("Error: uoe");
@@ -28,7 +33,7 @@ function userChoice (options) {
 }
 
 // Compare 
-function compareChoices(player, computer) {
+function playRound(player, computer) {
     let p = player
     let c = computer
     switch (p) {
@@ -64,30 +69,44 @@ function compareChoices(player, computer) {
 
 
 // Display Results
-
+function results(player, computer) {
+    if (player > computer) {
+        console.log("You WIN!");
+    } else if (player < computer) {
+        console.log("You LOSE!");
+    } else {
+        console.log("Error: Results");
+    }
+}
 
 
 // PLAY GAME
 function playGame() {
-    let userScore = Number(0);
-    let compScore = Number(0);
+    let playerScore = Number(0);
+    let computerScore = Number(0);
     let rounds = Number(3);
     let i = Number(0);
     while (i < rounds) {
-        let p = userChoice(choices);
-        let c = compChoice(choices);
-        let result = compareChoices(p, c)
+        let p = playerChoice(choices);
+        let c = computerChoice(choices);
+        let result = playRound(p, c)
             if (result === 'tie') {
                 console.log("It is a tie.");
             } else if (result === 'lose') {
                 console.log("You lose this round. Computer +1");
-                compScore++;
+                computerScore++;
+                i++;
             } else if (result === "win") {
                 console.log("You win this round. +1");
-                userScore++;
+                playerScore++;
+                i++;
             }
-        i++
+        console.log(`Score: Player - ${playerScore} | Computer - ${computerScore}`)
+
+        
     }
+    results(playerScore, computerScore)
+    
 
 }
 
