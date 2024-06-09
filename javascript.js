@@ -1,14 +1,13 @@
 // Rock Paper Scissors
 
-// I'm doing this in my own way as I'm coming from Python and wish to 
-// test how things are handled in comparison. I haven't followed 
-// The Odin Project's exact insructions because of this. It shouldn't 
-// change too much though. 
-
-// Tie: For now, I'm counting a tie as a failed round - no points are given
-// to either the player or computer, and the round doesn't move forward. 
 
 const choices = ["rock", "paper", "scissors"];
+const btns = document.querySelectorAll(".btn")
+
+
+for (let btn of btns) {
+    btn.addEventListener("click", playGame)
+}
 
 
 // Computer Choice
@@ -86,29 +85,32 @@ function playGame() {
     let computerScore = Number(0);
     let rounds = Number(3);
     let i = Number(0);
-    while (i < rounds) {
-        let p = playerChoice(choices);
-        let c = computerChoice(choices);
-        let result = playRound(p, c)
-            if (result === 'tie') {
-                console.log("It is a tie.");
-            } else if (result === 'lose') {
-                console.log("You lose this round. Computer +1");
-                computerScore++;
-                i++;
-            } else if (result === "win") {
-                console.log("You win this round. +1");
-                playerScore++;
-                i++;
-            }
-        console.log(`Score: Player - ${playerScore} | Computer - ${computerScore}`)
+
+
+
+
+    // while (i < rounds) {
+    //     let p = playerChoice(choices);
+    //     let c = computerChoice(choices);
+    //     let result = playRound(p, c)
+    //         if (result === 'tie') {
+    //             console.log("It is a tie.");
+    //         } else if (result === 'lose') {
+    //             console.log("You lose this round. Computer +1");
+    //             computerScore++;
+    //             i++;
+    //         } else if (result === "win") {
+    //             console.log("You win this round. +1");
+    //             playerScore++;
+    //             i++;
+    //         }
+    //     console.log(`Score: Player - ${playerScore} | Computer - ${computerScore}`)
 
         
-    }
-    results(playerScore, computerScore)
+    // }
+    // results(playerScore, computerScore)
     
 
 }
 
 playGame()
-

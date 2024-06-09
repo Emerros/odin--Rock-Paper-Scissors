@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
@@ -16,19 +13,18 @@
     <div class="site-wrapper">
         <header>
             <h1>Rock Paper Scissors</h1>
-            <h3>Best out of five wins.</h3>
+            <h5 class="status disappear">Best out of five wins.</h5>
         </header>
         <main>
-
             <div class="game-box">
-
                 <div class="display">
-                    <div class="player-choice">
-                        <p class="player-c"></p>
+                    <div class="player-choice center">
+                        <p class="player-c">player</p>
                     </div>
-                    <div class="win-lose hidden"></div>
-                    <div class="comp-choice">
-                        <p class="comp-c"></p>
+                    <!-- <div class="vertical-line"></div> -->
+                    <div class="win-lose-player"></div>
+                    <div class="comp-choice center">
+                        <p class="comp-c">computer</p>
                     </div>
                 </div>
 
@@ -44,14 +40,14 @@
                     </div>
                 </div>
                 <div class="rps-buttons">
-                    <button>rock</button>
-                    <button>paper</button>
-                    <button>scissors</button>
+                    <button class="btn rock">rock</button>
+                    <button class="btn paper">paper</button>
+                    <button class="btn scissors">scissors</button>
                 </div>
             </div>
             
         </main>
     </div>
-    <!-- <script src="javascript.js"></script> -->
+    <script src="javascript.js"></script>
 </body>
 </html>
