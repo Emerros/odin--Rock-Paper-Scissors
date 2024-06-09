@@ -1,9 +1,24 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    border: red dotted 1px;
-    font-family: 'Courier New', Courier, monospace;
+    /* border: red solid 1px; */
+    /* font-family: 'Courier New', Courier, monospace; */
+    /* border-radius: 10px; */
+    /* font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal; */
+    font-family: "Stylish", serif;
+    font-weight: 400;
+    font-style: normal;
 }
+
+:root {
+    --bg-gradient: linear-gradient(90deg, #00EF3F, #1e1f1f, #1e1f1f, #1e1f1f, #1e1f1f, #1e1f1f, #1e1f1f, #1e1f1f, #1e1f1f, #00EF3F) ;
+    --bg: #1e1f1f;
+    --text-color: #00EF3F
+}
+
 
 .text-left {
     text-align: left;
@@ -13,17 +28,24 @@
     text-align: right;
 }
 
-/*  */
+.hidden {
+    visibility: hidden;
+}
 
+/*  */
+html {
+    background: var(--bg-gradient);
+
+}
 body {
-    background-color: #000000;
     display: flex;
     justify-content: center;
+    
 }
 
 .site-wrapper {
-    background-color: #000000;
-    color: #FFFFFF;
+    background-color: var(--bg);
+    color: var(--text-color);
     width: 80%;
     max-width: 900px;
     min-width: 900px;
@@ -49,28 +71,42 @@ main {
 .game-box {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
 }
 
 .display {
+    display: flex;
+    align-items: center;
+    width: 100%;
     height: 300px;
 }
 
-.display-win-lose > * {
-    width: 100%;
+.display > .player-choice,
+.display > .comp-choice {
+    width: 100%; 
+    /* height: 100%; */
     text-align: center;
 }
 
-/* .score-trkr-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
+.win-lose {
+    background-color: red;
+    color: white;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 .score-trkr {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.score-trkr > h2 {
+    width: 250px;
 }
 
 .score-trkr h2,
@@ -93,19 +129,32 @@ main {
     text-align: center;
 }
 
-
+.controls {
+    width: 70%;
+}
 .rps-buttons {
     display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 70%;
+    height: 150px;
+    margin: 40px 0;
     font-size: 25px;
 }
 
 .rps-buttons > button {
-    background-color:black;
-    color: ivory;
-    width: 100px;
-    height: 100%;
+    background-color:var(--text-color);
+    color: var(--bg);
+    width: 120px;
+    height: 120px;
+    border: 4px solid var(--text-color);
+    border-radius: 15px;
+    font-size: 2rem;
 }
+
+.rps-buttons > button:hover {
+    background-color: red;
+}
+
+
 
