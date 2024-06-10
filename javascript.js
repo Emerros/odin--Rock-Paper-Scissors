@@ -2,12 +2,13 @@
 
 
 const choices = ["rock", "paper", "scissors"];
-const btns = document.querySelectorAll(".btn")
 
+let playerScore = Number(0);
+let computerScore = Number(0);
 
-for (let btn of btns) {
-    btn.addEventListener("click", playGame)
-}
+const rock = document.querySelector(".rock")
+const paper = document.querySelector(".paper")
+const scissors = document.querySelector(".scissors")
 
 
 // Computer Choice
@@ -19,19 +20,18 @@ function computerChoice(options) {
 
 
 // User Choice
-function playerChoice (options) {
-    let user = prompt("Rock, Paper, Scissors: ")
-    if (!options.includes(user.toLowerCase())) {
-        console.log("Error: uoe");
-        return 'uoe';
-        // console.log('You must select rock, paper, or scissors')
+// function playerChoice (options) {
+//     let user = prompt("Rock, Paper, Scissors: ")
+//     if (!options.includes(user.toLowerCase())) {
+//         console.log("Error: uoe");
+//         return 'uoe';
         
-    } else {
-        return user.toLowerCase();
-    }
-}
+//     } else {
+//         return user.toLowerCase();
+//     }
+// }
 
-// Compare 
+// There has to be a way to make this shorter 
 function playRound(player, computer) {
     let p = player
     let c = computer
@@ -70,47 +70,29 @@ function playRound(player, computer) {
 // Display Results
 function results(player, computer) {
     if (player > computer) {
-        console.log("You WIN!");
+        console.log("You Win!");
     } else if (player < computer) {
-        console.log("You LOSE!");
+        console.log("You Lose!");
     } else {
         console.log("Error: Results");
     }
 }
 
-
-// PLAY GAME
-function playGame() {
-    let playerScore = Number(0);
-    let computerScore = Number(0);
-    let rounds = Number(3);
-    let i = Number(0);
-
-
-
-
-    // while (i < rounds) {
-    //     let p = playerChoice(choices);
-    //     let c = computerChoice(choices);
-    //     let result = playRound(p, c)
-    //         if (result === 'tie') {
-    //             console.log("It is a tie.");
-    //         } else if (result === 'lose') {
-    //             console.log("You lose this round. Computer +1");
-    //             computerScore++;
-    //             i++;
-    //         } else if (result === "win") {
-    //             console.log("You win this round. +1");
-    //             playerScore++;
-    //             i++;
-    //         }
-    //     console.log(`Score: Player - ${playerScore} | Computer - ${computerScore}`)
-
-        
-    // }
-    // results(playerScore, computerScore)
-    
+function scoreUpdate(r) {
 
 }
 
-playGame()
+
+// PLAY GAME
+function playGame() {
+    const result = playRound(this.className, computerChoice());
+    console.log(typeof this.className)
+
+
+}
+
+rock.addEventListener('click', playGame);
+paper.addEventListener('click', playGame);
+scissors.addEventListener('click', playGame);
+
+

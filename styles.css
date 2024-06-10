@@ -3,6 +3,13 @@ styles and animations with this project.
 The stylesheet is an absolute mess. 
 Going to have to clean this up later.  */
 
+/* To-Do */
+/* 
+Add styles for images, status updates
+
+*/
+
+
 
 * {
     box-sizing: border-box;
@@ -138,9 +145,10 @@ main {
     text-align: center;
 }
 
-/* .player-choice {
-    background-color: #00EF3F;
-} */
+img {
+    width: 300px;
+    height: auto;
+}
 
 
 .vertical-line {
