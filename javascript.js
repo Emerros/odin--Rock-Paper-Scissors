@@ -1,8 +1,5 @@
 // Rock Paper Scissors
 
-
-const choices = ["rock", "paper", "scissors"];
-
 let playerScore = Number(0);
 let computerScore = Number(0);
 
@@ -10,86 +7,70 @@ const rock = document.querySelector(".rock")
 const paper = document.querySelector(".paper")
 const scissors = document.querySelector(".scissors")
 
-
-// Computer Choice
-function computerChoice(options) {
-    if (Array.isArray(options)) {
-        return options[Math.floor(Math.random() * options.length)]
-    }
+function computerChoice() {
+    const choices = ["rock", "paper", "scissors"];
+    return choices[Math.floor(Math.random() *  choices.length)]
 }
 
-
-// User Choice
-// function playerChoice (options) {
-//     let user = prompt("Rock, Paper, Scissors: ")
-//     if (!options.includes(user.toLowerCase())) {
-//         console.log("Error: uoe");
-//         return 'uoe';
-        
-//     } else {
-//         return user.toLowerCase();
-//     }
-// }
-
-// There has to be a way to make this shorter 
 function playRound(player, computer) {
-    let p = player
-    let c = computer
-    switch (p) {
-        case 'rock':
-            switch (c) {
-                case 'paper':
-                    return 'lose';
-                case 'rock':
-                    return 'tie';
-                case 'scissors':
-                    return 'win';
-            }
-        case 'paper':
-            switch (c) {
-                case 'scissors':
-                    return 'lose';
-                case 'paper':
-                    return 'tie';
-                case 'rock':
-                    return 'win';
-            }
-        case 'scissors':
-            switch (c) {
-                case 'rock':
-                    return 'lose';
-                case 'scissors':
-                    return 'tie'
-                case 'paper':
-                    return 'win';
-            }
+    switch (true) {
+        case player === computer:
+            return 'tie';
+        case player === 'rock' && computer === 'scissors':
+        case player === 'paper' && computer === 'rock':
+        case player === 'scissors' && computer === 'paper':
+            scoreUpdate('win')
+            return 'win';
+        default:
+            scoreUpdate('lose')
+            return 'lose';
+    }
+
+}
+
+function imgUpdate(playerSelection, computerSelection) {
+    let playerImage = document.querySelector('.player-choice');
+    let computerImage = document.querySelector('.comp-choice');
+    const playerText = document.querySelector('.player-text');
+    const computerText = document.querySelector('.comp-text');
+    let img = document.createElement('img');
+    let img2 = document.createElement('img');
+
+    img.src = `./pictures/${playerSelection}.png`;
+    img.alt = `A picture of a ${playerSelection}.`;
+    playerImage.replaceChild(img, playerText);
+
+    img2.src = `./pictures/${computerSelection}.png`;
+    img2.alt = `A picture of a ${computerSelection}`;
+    computerImage.replaceChild(img2, computerText);
+
+}
+
+function statusUpdate(stat) {
+
+}
+
+function scoreUpdate(s) {
+    if (s === 'win') {
+        playerScore++;
+        document.querySelector('.player-points').innerHTML = playerScore
+    } else if (s === 'lose') {
+        computerScore++;
+        document.querySelector('.computer-points').innerHTML = computerScore
+
     }
 }
-
-
-// Display Results
-function results(player, computer) {
-    if (player > computer) {
-        console.log("You Win!");
-    } else if (player < computer) {
-        console.log("You Lose!");
-    } else {
-        console.log("Error: Results");
-    }
-}
-
-function scoreUpdate(r) {
-
-}
-
 
 // PLAY GAME
 function playGame() {
-    const result = playRound(this.className, computerChoice());
-    console.log(typeof this.className)
+    let player_choice = String(this.className.split(' ')[1])
+    let computer_choice = computerChoice()
+    imgUpdate(player_choice, computer_choice)
 
-
-}
+    const result = playRound(player_choice, computer_choice);
+    console.log(`player: ${player_choice} | computer: ${computer_choice}`);
+    console.log(result)
+}   
 
 rock.addEventListener('click', playGame);
 paper.addEventListener('click', playGame);
